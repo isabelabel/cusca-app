@@ -98,7 +98,6 @@ function treatMessage(message, status_time)
     insertMessage(parsedData.status.toLowerCase(), parsedData.time, msg);
 
     if(parsedData.status == "DANGER") {
-        alert('entrou');
         //navigator.notification.alert(msg);    
     }
 }
@@ -107,7 +106,7 @@ function insertMessage(status, hour, message)
 {
     var element = document.getElementsByClassName('message-list')[0];
     if(element){
-        element.insertBefore(createMsgElement(status, hour, message));
+        element.insertBefore(createMsgElement(status, hour, message), element.firstChild);
     }
 }
 

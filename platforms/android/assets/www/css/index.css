@@ -128,9 +128,8 @@ body h2 {
 
 .message .time {
   color: #999;
-  margin-left: 5px;
-  margin-right: 15px;
-  width: 90px;
+  margin-left: 4px;
+  margin-right: 12px;
   vertical-align: baseline;
   float: left;
 }
