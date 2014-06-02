@@ -77,7 +77,8 @@ function initPushwoosh()
     pushNotification.setSoundType(2);
     pushNotification.setVibrateType(2);
     pushNotification.setLightScreenOnNotification(true);
- 
+    pushNotification.setMultiNotificationMode();
+
     //register for pushes
     pushNotification.registerDevice(
         function(status) {
@@ -98,7 +99,7 @@ function treatMessage(message, status_time)
     insertMessage(parsedData.status.toLowerCase(), parsedData.time, msg);
 
     if(parsedData.status == "DANGER") {
-        //navigator.notification.alert(msg);    
+        navigator.notification.alert(msg);
     }
 }
 

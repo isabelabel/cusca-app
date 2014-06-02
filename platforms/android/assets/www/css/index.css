@@ -119,7 +119,7 @@ body h2 {
 }
 
 .message-list {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .message {
@@ -128,15 +128,19 @@ body h2 {
 
 .message .time {
   color: #999;
-  margin-left: 4px;
-  margin-right: 12px;
-  vertical-align: baseline;
-  float: left;
+  margin-left: 6px;
+  margin-right: 6px;
+  display: inline-block;
+  width: 10%;
+  vertical-align: top;
 }
 
 .message .title {
   font-weight: bold;
-  vertical-align: baseline;
+  margin-right: 3px;
+  display: inline-block;
+  width: 85%;
+  vertical-align: top;
 }
 
 .message .success {
