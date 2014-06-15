@@ -49,58 +49,12 @@
 };*/
 
 function init() {
-    document.addEventListener("deviceready", initPushwoosh, true);
+    document.addEventListener("deviceready", initParseNotification, true);
 }
 
-
-function initPushwoosh()
-{
-    var pushNotification = window.plugins.pushNotification;
- 
-    //set push notifications handler
-    document.addEventListener('push-notification', function(event) {
-        var msg = event.notification.title;
-        var userData = event.notification.userdata;
-                                 
-        if(typeof(userData) != "undefined") {
-            console.warn('user data: ' + JSON.stringify(userData));
-        }
-        treatMessage(msg, event.notification.u);         
-        console.warn('user data: ' + JSON.stringify(userData));
-    });
- 
-    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-    pushNotification.onDeviceReady({ projectid: "1030535425326", appid : "0CBEF-D7BAE" });
-
-    //Configurations
-    pushNotification.setEnableLED(true);
-    pushNotification.setSoundType(2);
-    pushNotification.setVibrateType(2);
-    pushNotification.setLightScreenOnNotification(true);
-    pushNotification.setMultiNotificationMode();
-
-    //register for pushes
-    pushNotification.registerDevice(
-        function(status) {
-            var pushToken = status;
-            console.warn('push token: ' + pushToken);
-        },
-        function(status) {
-            console.warn(JSON.stringify(['failed to register ', status]));
-        }
-    );  
-}
-
-function treatMessage(message, status_time)
-{
-    var parsedData = JSON.parse(status_time);
-
-    msg = message.replace(parsedData.status + ' - ', "");
-    insertMessage(parsedData.status.toLowerCase(), parsedData.time, msg);
-
-    if(parsedData.status == "DANGER") {
-        navigator.notification.alert(msg);
-    }
+function initParseNotification(argument) {
+    var parsedData = JSON.parse(JSON.stringify(argument));
+    insertMessage(parsedData.status.toLowerCase(), parsedData.time, parsedData.msg);
 }
 
 function insertMessage(status, hour, message)

@@ -20,7 +20,6 @@
 /home/bel/git/cusca-app/platforms/android/assets/www/icon.png \
 /home/bel/git/cusca-app/platforms/android/assets/www/phonegap.js \
 /home/bel/git/cusca-app/platforms/android/assets/www/res \
-/home/bel/git/cusca-app/platforms/android/assets/www/plugins \
 /home/bel/git/cusca-app/platforms/android/assets/www/cordova.js \
 /home/bel/git/cusca-app/platforms/android/assets/www/spec.html \
 /home/bel/git/cusca-app/platforms/android/assets/www/config.xml \
@@ -152,9 +151,6 @@
 /home/bel/git/cusca-app/platforms/android/assets/www/res/screen/ios/jusbrasil-screen-ipad-portrait.png \
 /home/bel/git/cusca-app/platforms/android/assets/www/res/screen/ios/jusbrasil-screen-ipad-landscape.png \
 /home/bel/git/cusca-app/platforms/android/assets/www/res/screen/ios/jusbrasil-screen-iphone-portrait.png \
-/home/bel/git/cusca-app/platforms/android/assets/www/plugins/com.pushwoosh.plugins.pushwoosh \
-/home/bel/git/cusca-app/platforms/android/assets/www/plugins/com.pushwoosh.plugins.pushwoosh/www \
-/home/bel/git/cusca-app/platforms/android/assets/www/plugins/com.pushwoosh.plugins.pushwoosh/www/PushNotification.js \
 /home/bel/git/cusca-app/platforms/android/assets/www/css/index.css \
 /home/bel/git/cusca-app/platforms/android/assets/www/spec/index.js \
 /home/bel/git/cusca-app/platforms/android/assets/www/spec/helper.js \

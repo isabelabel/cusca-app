@@ -20,18 +20,65 @@
 package com.phonegap.helloworld;
 
 import android.os.Bundle;
+import com.parse.*;
 import org.apache.cordova.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class Cusca extends CordovaActivity 
-{
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        super.init();
-        // Set by <content src="index.html" /> in config.xml
-        super.loadUrl(Config.getStartUrl());
-        //super.loadUrl("file:///android_asset/www/index.html");
+import android.content.Intent;
+import android.widget.Toast;
+
+import java.lang.Override;
+
+public class Cusca extends CordovaActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    super.init();
+    // Set by <content src="index.html" /> in config.xml
+    super.loadUrl(Config.getStartUrl());
+    //super.loadUrl("file:///android_asset/www/index.html");
+
+    Parse.initialize(this, "jSxOwoUCmgDuQTAT3zFUK09gmaeoTgUYsTJVaHU3", "4qcknekEUs0vLT6gFMGLDMxqjAclf8A7H8NucB99");
+    PushService.setDefaultPushCallback(this, Cusca.class);
+    ParseInstallation.getCurrentInstallation().saveInBackground();
+    super.appView.getSettings().setJavaScriptEnabled(true);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    if (this.getIntent().getExtras().getString("com.parse.Data") != null) {
+      updateStatus();
     }
+  }
+
+  @Override
+  protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    setIntent(intent);
+  }
+
+  private void updateStatus() {
+    try {
+      JSONObject json = new JSONObject(this.getIntent().getExtras().getString("com.parse.Data"));
+
+      String msg = String.format("[%s] %s is %s. Updated at: %s"
+        , json.getString("section")
+        , json.getString("source")
+        , json.getString("status")
+        , json.getString("updated_at"));
+
+      String myJson = String.format("{\"%s\":\"%s\", \"%s\":\"%s\", \"%s\":\"%s\"}",
+        "status", json.getString("status"),
+        "time", json.getString("time"),
+        "msg", msg);
+
+      String javascriptFunction = String.format("javascript:initParseNotification(%s)", myJson);
+      super.loadUrl(javascriptFunction);
+    } catch (JSONException e) {
+
+    }
+  }
 }
 

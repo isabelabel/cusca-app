@@ -4,9 +4,6 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <feature name="PushNotification">
-        <param name="android-package" onload="true" value="com.pushwoosh.plugin.pushnotifications.PushNotifications" />
-    </feature>
     <name>Cusca</name>
     <description>
         This app receives the activities notifications from cusca web
